@@ -1,0 +1,29 @@
+{
+  "name": "web-backend-project",
+  "version": "1.0.0",
+  "description": "It's going to implement some features for the web site to control downloads :)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShamimShahraeini/linkChecker.git"
+  },
+  "author": "Shamim Shahraeini",
+  "dependencies": {
+    "ajv": "^6.12.6",
+    "axios": "^0.21.0",
+    "line-reader": "^0.4.0",
+    "semicolon-datapreparator": "^1.0.0",
+    "semicolon-datavalidator": "^1.0.0",
+    "semicolon-requestlogger": "^1.0.1",
+    "semicolon-router": "^4.0.1",
+    "semicolon-server": "^4.0.1"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ShamimShahraeini/linkChecker/issues"
+  },
+  "homepage": "https://github.com/ShamimShahraeini/linkChecker#readme"
+}
