@@ -4,6 +4,7 @@
   "description": "It's going to implement some features for the web site to control downloads :)",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
