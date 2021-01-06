@@ -1,5 +1,6 @@
 const axios = require('axios')
-const fs = require('fs')
+
+const mdl = require('../models/linkModel')
 
 const {
     error,
@@ -17,8 +18,6 @@ class LinkController {
 
     // GET linkService
     getLinks = async (request, response) => {
-
-
         fs.readFile('./downloadList.txt', {
             encoding: 'utf-8'
         }, function (err, data) {
@@ -51,7 +50,7 @@ class LinkController {
 
                     if (isValid) {
                         const link = resBody.link
-                        this.isAccessible('./downloadList.txt', link).then(result => {
+                        this._isAccessible('./downloadList.txt', link).then(result => {
                             const responseBody = {
                                 status: 'success',
                                 message: result
@@ -77,7 +76,7 @@ class LinkController {
         }
     }
 
-    isAccessible(file, link) {
+    _isAccessible(file, link) {
         return new Promise((resolve, reject) => {
             axios({
                 method: 'HEAD',
@@ -86,54 +85,15 @@ class LinkController {
                 if (res.headers['content-type'].includes('text/html;')) {
                     reject(`link doesn't contain file!`)
                 } else {
-                    const done = await this.appendToFile(file, link)
-                    if (done === 'link was added to list!') {
+                    const done = await mdl.appendToFile(file, link)
+                    if (done === 'data was added to list!') {
                         resolve(done)
                     } else {
-                        reject(done)
+                        reject('data was NOT added to list!')
                     }
                 }
             }).catch(err => {
                 reject('link is not reachable!')
-            })
-        })
-    }
-
-    appendToFile(file, pattern) {
-        return new Promise(async (resolve, reject) => {
-            const done = await this.ifExists(file, pattern)
-            if (done === 'link was added to list!') {
-                resolve(done)
-            } else {
-                fs.appendFile(file, pattern + '\r\n', (err) => {
-                    if (err) {
-                        reject(err)
-                    } else {
-                        resolve('link was added to list!')
-                    }
-                })
-            }
-
-        })
-    }
-
-    ifExists(file, pattern) {
-        return new Promise((resolve, reject) => {
-            fs.open(file,'r',(err) => {
-                if (err) {
-                    resolve('file does not exist')
-                } else {
-                    fs.readFile(file, {
-                        encoding: 'utf-8'
-                    }, (err, data) => {
-                        if (err) {
-                            reject(err)
-                        } else {
-                            if (data.indexOf(pattern) != -1)
-                                resolve('link was added to list!')
-                        }
-                    })
-                }
             })
         })
     }
