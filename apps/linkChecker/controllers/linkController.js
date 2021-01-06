@@ -14,28 +14,26 @@ class LinkController {
 
     constructor() {
         this.link = ""
+        this.file = './downloadList.txt'
     }
 
     // GET linkService
     getLinks = async (request, response) => {
-        fs.readFile('./downloadList.txt', {
-            encoding: 'utf-8'
-        }, function (err, data) {
-            if (!err) {
-                const responseBody = {
-                    status: 'Ok',
-                    message: 'Here is ur requested data:',
-                    data: data
-                }
-                ok(response, responseBody)
+        try {
+            const data = await mdl.readFileContent(this.file)
+            
+            if (data) {
+                data.pipe(response)
             } else {
                 const responseBody = {
-                    status: 'Not Found',
-                    message: ('No such file or directory.')
+                    status: 'fail',
+                    message: 'file does not exist!'
                 }
                 errorNotFound(response, responseBody)
             }
-        })
+        } catch (err) {
+            errorServerInternal(response, err)
+        }
     }
 
     // POST /linkService
@@ -50,7 +48,7 @@ class LinkController {
 
                     if (isValid) {
                         const link = resBody.link
-                        this._isAccessible('./downloadList.txt', link).then(result => {
+                        this._isAccessible(this.file, link).then(result => {
                             const responseBody = {
                                 status: 'success',
                                 message: result

@@ -6,6 +6,19 @@ class linkModel {
         this.file = ""
     }
 
+    readFileContent(file) {
+        return new Promise((resolve, reject) => {
+            fs.open(file, 'r', (err) => {
+                if (err) {
+                    resolve('file does not exist')
+                } else {
+                    var readStream = fs.createReadStream(file)
+                    resolve(readStream)
+                }
+            })
+        })
+    }
+
     appendToFile(file, pattern) {
         return new Promise(async (resolve, reject) => {
             const done = await this._ifExists(file, pattern)
@@ -25,7 +38,7 @@ class linkModel {
 
     _ifExists(file, pattern) {
         return new Promise((resolve, reject) => {
-            fs.open(file,'r',(err) => {
+            fs.open(file, 'r', (err) => {
                 if (err) {
                     resolve('file does not exist')
                 } else {
