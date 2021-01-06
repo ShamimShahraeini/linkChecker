@@ -15,7 +15,6 @@
   "dependencies": {
     "ajv": "^6.12.6",
     "axios": "^0.21.0",
-    "line-reader": "^0.4.0",
     "semicolon-datapreparator": "^1.0.0",
     "semicolon-datavalidator": "^1.0.0",
     "semicolon-requestlogger": "^1.0.1",
