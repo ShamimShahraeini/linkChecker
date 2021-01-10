@@ -1,0 +1,151 @@
+{
+	"info": {
+		"_postman_id": "3bd97b26-e070-47fc-86d6-9f7fd9ca3848",
+		"name": "linkService",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "add links",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"link\": \"https://dl.downloadly.ir/Files/Software/Mozilla_Firefox_84.0.2_x86_Downloadly.ir.rar\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.5.97:8080/linkService",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"5",
+						"97"
+					],
+					"port": "8080",
+					"path": [
+						"linkService"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get list of links wanna be downloaded",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://192.168.5.97:8080/linkService",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"5",
+						"97"
+					],
+					"port": "8080",
+					"path": [
+						"linkService"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "get list of links wanna be downloaded",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.5.97:8080/linkService",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"5",
+								"97"
+							],
+							"port": "8080",
+							"path": [
+								"linkService"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 10 Jan 2021 13:07:05 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "https://dl2.soft98.ir/soft/g/GridinSoft.Anti-Malware.4.1.76.5140.rar?1609313785\n"
+				},
+				{
+					"name": "get list of links wanna be downloaded",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.5.97:8080/linkService",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"5",
+								"97"
+							],
+							"port": "8080",
+							"path": [
+								"linkService"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 10 Jan 2021 13:05:51 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "https://dl2.soft98.ir/soft/g/GridinSoft.Anti-Malware.4.1.76.5140.rar?1609313785\n"
+				}
+			]
+		}
+	]
+}
