@@ -24,7 +24,7 @@ class linkModel {
             const done = await this._ifExists(file, pattern)
             if (done === 'data was added to list!') {
                 resolve(done)
-            } else {
+            } else if (done === 'data should add') {
                 fs.appendFile(file, pattern + '\r\n', (err) => {
                     if (err) {
                         reject(err)
@@ -32,6 +32,8 @@ class linkModel {
                         resolve('data was added to list!')
                     }
                 })
+            } else {
+                reject('data was NOT added to list!')
             }
         })
     }
@@ -48,8 +50,12 @@ class linkModel {
                         if (err) {
                             reject(err)
                         } else {
-                            if (data.indexOf(pattern) != -1)
+                            if (data.indexOf(pattern) != -1) {
                                 resolve('data was added to list!')
+                            } else {
+                                resolve('data should add')
+                            }
+                                
                         }
                     })
                 }
