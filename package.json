@@ -15,11 +15,13 @@
   "dependencies": {
     "ajv": "^6.12.6",
     "axios": "^0.21.0",
+    "node-static": "^0.7.11",
     "semicolon-datapreparator": "^1.0.0",
     "semicolon-datavalidator": "^1.0.0",
     "semicolon-requestlogger": "^1.0.1",
     "semicolon-router": "^4.0.1",
-    "semicolon-server": "^4.0.1"
+    "semicolon-server": "^4.0.1",
+    "serve-handler": "^6.1.3"
   },
   "license": "MIT",
   "bugs": {
