@@ -25,10 +25,14 @@ class LinkController {
 
         try {
 
-            // var filePath = path.join(__dirname, 'dist')
-            // var file = new(nodestatic.Server)("../../../../frontend/LinkCheckerVueJs_Part/dist")
-            var file = new nodestatic.Server('./');
-            console.log(request.url);
+            var filePath = request.url
+            if (filePath == '/') {
+                filePath = "./public"
+            } else {
+                filePath = "./"
+            }
+            var file = new nodestatic.Server(filePath);
+            // console.log(request.url);
             file.serve(request, response).addListener('error', function (err) {
                 console.error("Error serving " + request.url + " - " + err.message);
             })

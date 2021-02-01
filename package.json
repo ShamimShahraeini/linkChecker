@@ -19,7 +19,7 @@
     "semicolon-datapreparator": "^1.0.0",
     "semicolon-datavalidator": "^1.0.0",
     "semicolon-requestlogger": "^1.0.1",
-    "semicolon-router": "^4.0.1",
+    "semicolon-router": "^4.1.1",
     "semicolon-server": "^4.0.1",
     "serve-handler": "^6.1.3"
   },
