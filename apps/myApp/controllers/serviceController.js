@@ -26,7 +26,7 @@ class LinkController {
         try {
 
             var filePath = request.url
-            if (filePath == '/') {
+            if (filePath == '/' || filePath == 'index.html') {
                 filePath = "./public"
             } else {
                 filePath = "./"
