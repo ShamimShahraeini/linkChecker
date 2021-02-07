@@ -1,5 +1,6 @@
-# our specific file
+# our specific file & folder
 downloadList.txt
+tmp
 
 # ideas
 .idea/
