@@ -1,5 +1,7 @@
 const mdl = require('../models/downloadModel')
-const {util} = require('./utils')
+const {
+    util
+} = require('./utils')
 const Aria2 = require("aria2")
 const aria2 = new Aria2([])
 
@@ -106,11 +108,13 @@ class downloadController {
             mdl.readFileContent(file).then(lines => {
                 const urls = []
                 for (const line of lines) {
-                    const url = []
-                    url.push("addUri")
-                    url.push([line])
-                    url.push(options)
-                    urls.push(url)
+                    if (line != '') {
+                        const url = []
+                        url.push("addUri")
+                        url.push([line])
+                        url.push(options)
+                        urls.push(url)
+                    }
                 }
                 // console.log(urls);
                 resolve(urls)
@@ -141,7 +145,7 @@ class downloadController {
                 })
                 if (rejectedRes.length == 0) {
                     resolve(resCount)
-                    
+
                 } else {
                     let failRes = []
                     rejectedRes.forEach(result => {
