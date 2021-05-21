@@ -1,6 +1,6 @@
 {
   "name": "web-backend-project",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "It's going to implement some features for the web site to control downloads :)",
   "main": "index.js",
   "scripts": {

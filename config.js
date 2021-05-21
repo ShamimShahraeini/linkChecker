@@ -1,6 +1,6 @@
 const serverRequirement = {
     hostname: 'localhost',
-    port: 8080
+    port: 80
   }
 
   const databaseRequirement = {

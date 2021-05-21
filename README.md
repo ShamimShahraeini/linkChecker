@@ -9,6 +9,10 @@ This is gonna check if requested links are valid and they'll return a valid cont
 
 * run `npm i` to install dependencies
 
+* install aria2 `apt install aria2`
+
+* use `setcap 'cap_net_bind_service=+ep' $(which node)` to allow linux use port 80
+
 * run `node index.js` or `npm start`
 
 * then request to the server(check with postman):
