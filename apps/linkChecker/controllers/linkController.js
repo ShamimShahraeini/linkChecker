@@ -74,27 +74,43 @@ class LinkController {
         }
     }
 
+
+    _startsWith(str, word) {
+        return str.lastIndexOf(word, 0) === 0;
+    }
+
     _isAccessible(file, link) {
-        return new Promise((resolve, reject) => {
-            axios({
-                method: 'HEAD',
-                url: link,
-            }).then(async (res) => {
-                if (res.headers['content-type'].includes('text/html;')) {
-                    reject(`link doesn't contain file!`)
+        return new Promise(async (resolve, reject) => {
+            if (link.lastIndexOf("magnet", 0) === 0 || link.lastIndexOf("magnet", 0) === 0) {
+                const done = await mdl.appendToFile(file, link)
+                if (done === 'data was added to list!') {
+                    resolve(done)
                 } else {
-                    const done = await mdl.appendToFile(file, link)
-                    if (done === 'data was added to list!') {
-                        resolve(done)
-                    } else {
-                        reject('data was NOT added to list!')
-                    }
+                    reject('data was NOT added to list!')
                 }
-            }).catch(err => {
-                reject('link is not reachable!')
-            })
+            } else {
+                axios({
+                    method: 'HEAD',
+                    url: link,
+                }).then(async (res) => {
+                    if (res.headers['content-type'].includes('text/html;')) {
+                        reject(`link doesn't contain file!`)
+                    } else {
+                        const done = await mdl.appendToFile(file, link)
+                        if (done === 'data was added to list!') {
+                            resolve(done)
+                        } else {
+                            reject('data was NOT added to list!')
+                        }
+                    }
+                }).catch(err => {
+                    reject('link is not reachable!')
+                })
+            }
+
         })
     }
+
 }
 
 module.exports = new LinkController()
