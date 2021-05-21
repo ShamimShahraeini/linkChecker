@@ -59,10 +59,18 @@ class downloadController {
                                 const promises = await aria2.batch(batch)
                                 this._downloadList(promises).then(resCount => {
                                     if (resCount === batch.length) {
-                                        ok(response, {
-                                            status: 'success',
-                                            msg: 'All requested links downloaded.'
+                                        mdl.deleteFileContent(this.file).then(res => {
+                                            ok(response, {
+                                                status: 'success',
+                                                msg: 'All requested links downloaded. list was cleared. C U 2morrow :)'
+                                            })
+                                        }).catch(err => {
+                                            ok(response, {
+                                                status: 'success',
+                                                msg: 'All requested links downloaded. but list is still full'
+                                            })
                                         })
+
                                     } else if (resCount === 0) {
                                         error(response, {
                                             status: 'fail',

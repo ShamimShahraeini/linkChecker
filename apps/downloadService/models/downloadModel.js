@@ -6,6 +6,18 @@ class appModel {
         this.file = ""
     }
 
+    deleteFileContent(file) {
+        return new Promise((resolve, reject) => {
+            fs.truncate(file,  0, async (err) => {
+                if (err) {
+                    reject('file does not exist')
+                } else {
+                    resolve('cleared')
+                }
+            })
+        })
+    }
+
     readFolderContent(testFolder) {
         return new Promise((resolve, reject) => {
             fs.readdir(testFolder, (err, filesInFolder) => {
